@@ -1,6 +1,7 @@
+import Categories from '@/pages/Categories'
 import Document from '@/pages/Document'
+import GameField from '@/pages/GameField';
 import Home from '@/pages/Home'
-// import React from 'react'
 import { createBrowserRouter,  RouterProvider } from 'react-router-dom'
 
 function Router() {
@@ -12,7 +13,16 @@ function Router() {
     {
       path: "/instruction",
       element: <Document />,
+    },
+    {
+      path: "/categories",
+      element: <Categories />,
+    },
+    {
+      path: "/game-field/:id",
+      element: <GameField />,
     }
+    
   ]);
   return <RouterProvider router={router}></RouterProvider>;
   

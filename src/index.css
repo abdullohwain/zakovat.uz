@@ -120,3 +120,10 @@
     @apply bg-background text-foreground;
   }
 }
+
+
+@layer utilities {
+  .container {
+    @apply w-full max-w-[1100px] mx-auto px-4;
+  }
+}

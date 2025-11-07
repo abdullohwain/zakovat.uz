@@ -1,7 +1,9 @@
 import { BASE_URL } from "@/api/baseUrl";
 import { useEffect, useState } from "react"
 
-function useFetch<T>() {
+type Param =  "documentation" | `questions${string}` | "categories";
+
+function useFetch<T>(param: Param) {
     const [data, setData] = useState<T | null>(null);
     const [error, setError] = useState<string | null>(null);
     const [loading, setLoading] = useState<boolean>(false);
@@ -9,7 +11,7 @@ function useFetch<T>() {
     async function fetchData() {
         setLoading(true);
         try {
-            const response = await fetch(BASE_URL);
+            const response = await fetch(BASE_URL + param);
             if(!response.ok){
                 throw new Error("Xatolik bor: " + response.status);
             }
