@@ -1,5 +1,6 @@
 import Document from '@/pages/Document'
 import Home from '@/pages/Home'
+// import React from 'react'
 import { createBrowserRouter,  RouterProvider } from 'react-router-dom'
 
 function Router() {
