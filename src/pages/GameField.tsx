@@ -1,7 +1,7 @@
 import Loading from "@/components/Loading";
 import { Button } from "@/components/ui/button";
 import useFetch from "@/hooks/useFetch";
-// import { useState } from "react";
+import { useState } from "react";
 import { useParams } from "react-router-dom";
 
 interface Question{
@@ -26,7 +26,7 @@ function GameField() {
 
     const {id} = useParams()
     const {data, loading} = useFetch<Data>(`questions/${id}`)
-    // const [activeQuestions, setActiveQuestions] = useState(0)
+    const [] = useState(0)
 
 
     if(loading){
