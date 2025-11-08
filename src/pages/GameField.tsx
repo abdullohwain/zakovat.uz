@@ -26,7 +26,7 @@ function GameField() {
 
     const {id} = useParams()
     const {data, loading} = useFetch<Data>(`questions/${id}`)
-    const [activeQuestions, setActiveQuestions] = useState(0)
+    // const [activeQuestions, setActiveQuestions] = useState(0)
 
 
     if(loading){
@@ -38,7 +38,7 @@ function GameField() {
 
         <div className="flex gap-5 items-center justify-center mb-20">
             {data &&
-             data.questions[activeQuestions].answer
+             data.questions[1].answer
             .toUpperCase()
             .split(" ")
             .map((answer,i)=>{
