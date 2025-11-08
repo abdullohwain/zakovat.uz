@@ -26,7 +26,7 @@ function GameField() {
 
     const {id} = useParams()
     const {data, loading} = useFetch<Data>(`questions/${id}`)
-    const [activeQuestions, setActiveQuestions] = useState(0)
+    const [activeQuestions,] = useState(0)
 
 
     if(loading){
