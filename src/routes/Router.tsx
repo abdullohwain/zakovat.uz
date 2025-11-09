@@ -1,3 +1,4 @@
+
 import Categories from '@/pages/Categories'
 import Document from '@/pages/Document'
 import GameField from '@/pages/GameField'
