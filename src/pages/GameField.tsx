@@ -1,8 +1,9 @@
 import Keyboard from "@/components/Keyboard";
 import Loading from "@/components/Loading";
 import useFetch from "@/hooks/useFetch";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { toast } from "react-toastify";
 
 interface Question{
     id: number;
@@ -22,6 +23,22 @@ function GameField() {
     const [activeQuestions, setActiveQuestions] = useState(0);
     const [letters, setLetters] = useState<string>("")
 
+    useEffect(() => {
+        let timeOut: number;
+        if(
+            data?.questions[activeQuestions].answer
+            .toUpperCase()
+            .split("")
+            .every((l) => letters.includes(l) || l == " ")
+        ) {
+            timeOut = setTimeout(() => {
+                setLetters("");
+                setActiveQuestions((prev) => prev + 1);
+            }, 2000);
+            toast.success("To'g'ri topdingiz!")
+        }
+        return ()=> clearTimeout(timeOut);
+    }, [letters]);
 
     if(loading){
         return <Loading/>;
