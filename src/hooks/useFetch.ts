@@ -25,7 +25,7 @@ function useFetch<T>(param: Param) {
     }
     useEffect(()=> {
         fetchData();
-    }, []); 
+    }, [param]); 
   return { data, error, loading};
 }
 
