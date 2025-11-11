@@ -1,15 +1,28 @@
+import { toast } from "react-toastify";
 import { Button } from "./ui/button"
 
 type Props = {
     setLetters: React.Dispatch<React.SetStateAction<string>>
+    setHeart: React.Dispatch<React.SetStateAction<{ isLive: boolean}[]>>
     letters: string;
+    answer: string | undefined;
+    heart: { isLive: boolean }[];
 }
 
 const keyboard: string[] = ["qwertyuiop", "asdfghjkl", "zxcvbnm"]
 
-function Keyboard({setLetters, letters}: Props) {
+function Keyboard({setLetters, letters, answer, setHeart, heart}: Props) {    
     const handleClick = (key: string) => {
         setLetters((prev) => (prev += key));
+        if (!answer?.toUpperCase().includes(key)) {
+                if (heart[1].isLive) {
+                    toast.warning("Xato harf tanlandi! Yana bir imkoniyatingiz bor")
+                    setHeart ([{ isLive: true }, { isLive: false }]);
+                } else {
+                    toast.error("Yutqazdingiz!");
+                    setHeart ([{ isLive: false }, { isLive: false }]);
+                }
+        }
     };
 
   return (
